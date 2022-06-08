@@ -1,0 +1,48 @@
+{% extends 'basic.html' %}
+{% block content %}
+
+    <style>
+      .about{
+        text-align: center;
+      }
+    </style>
+
+    <br>
+    <br>
+    <br>
+    <h3 class="about"> <b> User Form </b></h3>
+    <br>
+    <div class="row">
+        <div class="col-12">
+            <!-- <form action="" method="get"> -->
+            <form action="" method="post">
+                {% csrf_token %}
+                <!-- {{ form }} -->
+                {% if error %}
+                <div class="alert alert-danger" role="alert">
+                    A simple danger alert—check it out!
+                </div>
+                {% endif %}
+                <div>
+                    <label for="">Value-1</label>
+                    <input type="text" name="num1" value="{{n1}}" class="form-control"/>
+                </div>
+                <div class="pt-2">
+                    <label for="">Value-2</label>
+                    <input type="text" name="num2" value="{{n2}}" class="form-control"/>
+                </div>
+                <div class="pt-2">
+                    <button type="submit"> Submit</button>
+                </div>
+                <br>
+                Answer is...
+                <input type="text" value="{{output}}"/>
+                <br>
+                <br>
+
+
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

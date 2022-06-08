@@ -1,0 +1,30 @@
+{% extends 'basic.html' %}
+{% block content %}
+
+    <style>
+      .about{
+        text-align: center;
+      }
+    </style>
+
+    <br>
+    <br>
+    <br>
+    <h3 class="about"> <b> {{newsdetails.news_title}} </b></h3>
+    <br>
+      <div class="single-info row">
+          <div class="col-6 " >
+            {% if newsdetails.news_image != NULL %}
+              <img src="/media/{{newsdetails.news_image}}" class="img-fluid">
+            {% endif %}
+          </div >
+          <div class="col-lg-6 col-md-12">
+              <div class="bg-white p-5">
+                  {{newsdetails.news_desc | safe }}
+              </div>
+          </div>
+      </div>
+<br>
+<br>
+    
+{% endblock %}
