@@ -28,7 +28,8 @@ urlpatterns = [
     path('contact-us/', views.contactus),
     path('saveenquiry/', views.saveenquiry, name='saveenquiry'),
     path('newsdetails/<slug>', views.newsdetails),
-]
+
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:
     urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
