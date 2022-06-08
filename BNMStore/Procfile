@@ -1,1 +1,1 @@
-web: gunicorn BNMStore.wsgi
+web: gunicorn BNMStore.wsgi --log-file
