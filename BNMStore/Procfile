@@ -1,1 +1,1 @@
-web: gunicorn bnmstore.wsgi --log-file -
+web: gunicorn dep:app
