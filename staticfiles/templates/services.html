@@ -1,0 +1,93 @@
+{% extends 'basic.html' %}
+{% block content %}
+
+<div class="container px-4 py-5" id="icon-grid">
+    <h2 class="pb-2 border-bottom"> <b>Services</b> </h2>
+
+    <form method="get">
+        <input type="text" name="servicename" value="" />
+        <input type="submit" value="Search" />
+
+    </form>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5">
+      {% for n in serviceData %}
+      <div class="col d-flex align-items-start">
+        <svg class="{{n.service_icon}}" width="1.75em" height="1.75em"><use xlink:href="#bootstrap"></use></svg>
+        <div>
+          <h4 class="fw-bold mb-0">{{n.service_title }}</h4>
+          <p>{{n.service_des | safe }}</p>
+        </div>
+      </div>
+      {% empty %}
+      No Records Found...
+      {% endfor %}
+      <!-- <div class="col d-flex align-items-start">
+        <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#cpu-fill"></use></svg>
+        <div>
+          <h4 class="fw-bold mb-0">Featured title</h4>
+          <p>Paragraph of text beneath the heading to explain the heading.</p>
+        </div>
+      </div>
+      <div class="col d-flex align-items-start">
+        <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#calendar3"></use></svg>
+        <div>
+          <h4 class="fw-bold mb-0">Featured title</h4>
+          <p>Paragraph of text beneath the heading to explain the heading.</p>
+        </div>
+      </div>
+      <div class="col d-flex align-items-start">
+        <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#home"></use></svg>
+        <div>
+          <h4 class="fw-bold mb-0">Featured title</h4>
+          <p>Paragraph of text beneath the heading to explain the heading.</p>
+        </div>
+      </div>
+      <div class="col d-flex align-items-start">
+        <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#speedometer2"></use></svg>
+        <div>
+          <h4 class="fw-bold mb-0">Featured title</h4>
+          <p>Paragraph of text beneath the heading to explain the heading.</p>
+        </div>
+      </div>
+      <div class="col d-flex align-items-start">
+        <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#toggles2"></use></svg>
+        <div>
+          <h4 class="fw-bold mb-0">Featured title</h4>
+          <p>Paragraph of text beneath the heading to explain the heading.</p>
+        </div>
+      </div>
+      <div class="col d-flex align-items-start">
+        <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#geo-fill"></use></svg>
+        <div>
+          <h4 class="fw-bold mb-0">Featured title</h4>
+          <p>Paragraph of text beneath the heading to explain the heading.</p>
+        </div>
+      </div>
+      <div class="col d-flex align-items-start">
+        <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#tools"></use></svg>
+        <div>
+          <h4 class="fw-bold mb-0">Featured title</h4>
+          <p>Paragraph of text beneath the heading to explain the heading.</p>
+        </div>
+      </div> -->
+    </div>
+
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        {% if serviceData.has_previous %}
+        <li class="page-item"><a class="page-link" href="/services/?page=1">First</a></li>
+        <li class="page-item"><a class="page-link" href="/services/?page={{serviceData.previous_page_number}}">Previous</a></li>
+        {% endif %}
+        {% for n in totalpagelist %}
+        <li class="page-item"><a class="page-link" href="/services/?page={{n}}">{{n}}</a></li>
+        {% endfor %}
+        {% if serviceData.has_next %}
+        <li class="page-item"><a class="page-link" href="/services/?page={{serviceData.next_page_number}}">Next</a></li>
+        <li class="page-item"><a class="page-link" href="/services/?page={{lastpage}}">Last</a></li>
+        {% endif %}
+
+      </ul>
+    </nav>
+
+  </div>
+{% endblock %}

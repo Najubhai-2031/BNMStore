@@ -1,0 +1,29 @@
+{% extends 'basic.html' %}
+{% block content %}
+
+<br>
+<br>
+<form class="row g-3" method="post" action="{% url 'saveenquiry'%}">
+    {% csrf_token %}
+<div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Name</label>
+    <input type="text" class="form-control" name="name" id="exampleFormControlInput1" placeholder="Name">
+  </div>
+<div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Email address</label>
+    <input type="email" class="form-control" name="email" id="exampleFormControlInput1" placeholder="name@example.com">
+  </div>
+<div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Phone Number</label>
+    <input type="number" class="form-control" name="phone" id="exampleFormControlInput1" placeholder="Phone">
+  </div>
+  <div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label">Messege</label>
+    <textarea class="form-control" name="messege" id="exampleFormControlTextarea1" placeholder="Messege" rows="3"></textarea>
+  </div>
+<div class="col-auto">
+    <button type="submit" name="save" class="btn btn-primary mb-3">Submit</button>
+  </div>
+</form>
+
+  {% endblock %}
